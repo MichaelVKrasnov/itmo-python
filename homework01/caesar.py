@@ -15,7 +15,15 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     ''
     """
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    alphabet="abcdefghijklmnopqrstuvwxyz"
+    for i in plaintext:
+            if alphabet.find(i.lower())!=-1:
+                if i.isupper():
+                    ciphertext+=alphabet[(alphabet.find(i.lower())+shift) % len(alphabet)].upper()
+                else:
+                    ciphertext+=alphabet[(alphabet.find(i)+shift) % len(alphabet)]
+            else:
+                ciphertext+=i
     return ciphertext
 
 
@@ -33,7 +41,15 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     ''
     """
     plaintext = ""
-    # PUT YOUR CODE HERE
+    alphabet="abcdefghijklmnopqrstuvwxyz"
+    for i in ciphertext:
+        if alphabet.find(i.lower())!=-1:
+            if i.isupper():
+                plaintext+=alphabet[(alphabet.find(i.lower())-shift) % len(alphabet)].upper()
+            else:
+                plaintext+=alphabet[(alphabet.find(i)-shift) % len(alphabet)]
+        else:
+            plaintext+=i
     return plaintext
 
 
